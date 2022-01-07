@@ -125,6 +125,7 @@ const usuarioSignin = async (req = request, res = response) => {
   
     const usuarios = await conn.query(usuariosQueries.getUsuarioByEmail, [email]);
 
+    console.log(usuarios.length);
     if (usuarios.length === 0) {
       res.status(404).json({msg: ` No se encontró el usuario ${email}.` });
       return;
@@ -146,6 +147,6 @@ const usuarioSignin = async (req = request, res = response) => {
     if (conn) conn.end();
 
   }
-}
+};
 
 module.exports = {usuariosGet, usuariosPost, usuariosPut, usuariosDelete, usuarioSignin,};
